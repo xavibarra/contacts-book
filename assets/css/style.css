@@ -9,7 +9,7 @@ h1 {
   text-align: center;
   margin: 1em;
 }
-.last-name {
+.email {
   font-size: 70%;
 }
 .container {
@@ -25,6 +25,9 @@ h1 {
 .hidden {
   display: none;
 }
+.new-contact {
+  cursor: pointer;
+}
 .container .text {
   text-align: center;
   font-size: 41px;
@@ -39,6 +42,16 @@ h1 {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.close-icon-container {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  color: #9f01ea;
+  cursor: pointer;
+  display: inline-block;
 }
 a {
   text-decoration: none;

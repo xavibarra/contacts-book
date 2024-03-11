@@ -22,7 +22,7 @@
             <input
               class="form-control form-control-sm ml-3 w-75"
               type="text"
-              placeholder="Search"
+              placeholder="Search by name, email, phone..."
               aria-label="Search"
               id="inputBusqueda"
             />
@@ -31,7 +31,7 @@
 
         <div id="results"></div>
         <div class="abc">
-          <div class="plus">
+          <div onclick="newContact()" class="plus new-contact">
             <i class="fa-solid fa-circle-plus"></i>
             <p>Add contact</p>
           </div>
@@ -39,7 +39,10 @@
         </div>
       </section>
       <div id="resultados"></div>
-      <section class="container" id="containerForm">
+      <section class="container hidden" id="containerForm">
+        <span class="close-icon-container" onclick="closeContainer()">
+          <i class="fa-solid fa-circle-xmark" id="closeIcon"></i>
+        </span>
         <div class="text">Contact add</div>
         <form action="#" id="formAdd">
           <div class="form-row">
