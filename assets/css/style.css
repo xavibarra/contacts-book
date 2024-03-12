@@ -182,12 +182,7 @@ input.invisible-focus:focus {
   }
 }
 /* TARJETA CONTACTO */
-#inputBusqueda {
-  width: 300px;
-  padding: 5px;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
+
 .flip-card {
   background-color: transparent;
   width: 190px;

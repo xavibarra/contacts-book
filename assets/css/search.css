@@ -80,3 +80,46 @@ p {
 #search {
   margin: 2em;
 }
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+.search-input {
+  padding: 8px 30px 8px 35px; /* Ajustamos el padding izquierdo */
+  border: 2px solid black;
+  box-shadow: 4px 4px black;
+  border-radius: 50px;
+  flex: 1;
+  width: 400px;
+}
+
+.search-button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+i {
+  color: black;
+}

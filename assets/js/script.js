@@ -337,3 +337,30 @@ function addContact(event) {
 }
 // Escucha el evento submit del formulario
 contactForm.addEventListener("submit", addContact);
+
+// ----------------------- Deseleccion de letra -----------------------
+function realizarBusqueda(valorBusqueda) {
+  const resultados = [];
+
+  // Deseleccionar la opción de letra seleccionada
+  const selectedOption = document.querySelector(".option input:checked");
+  if (selectedOption) {
+    selectedOption.checked = false;
+  }
+
+  // Itera sobre cada contacto en el array de contactos
+  contacts.forEach((contacto) => {
+    // Verifica si el valor de búsqueda coincide con algún campo del contacto
+    if (
+      contacto.nombre.toLowerCase().includes(valorBusqueda) ||
+      contacto.apellido.toLowerCase().includes(valorBusqueda) ||
+      contacto.telefono.toLowerCase().includes(valorBusqueda) ||
+      contacto.email.toLowerCase().includes(valorBusqueda)
+    ) {
+      resultados.push(contacto);
+    }
+  });
+
+  // Muestra los resultados en la interfaz de usuario
+  mostrarResultados(resultados);
+}
