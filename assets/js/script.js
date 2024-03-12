@@ -27,6 +27,26 @@ for (let i = 65; i <= 90; i++) {
   option.appendChild(input);
   option.appendChild(btn);
   alphabetContainer.appendChild(option);
+
+  option.addEventListener("click", () => {
+    const letra = letter.toLowerCase();
+    buscarPorLetra(letra);
+  });
+}
+
+function buscarPorLetra(letra) {
+  // Convierte la letra a minúsculas
+  const letraMinuscula = letra.toLowerCase();
+
+  // Filtra los contactos cuyos nombres o apellidos comienzan con la letra proporcionada
+  const resultados = contacts.filter(
+    (contact) =>
+      contact.nombre.toLowerCase().startsWith(letraMinuscula) ||
+      contact.apellido.toLowerCase().startsWith(letraMinuscula)
+  );
+
+  // Muestra los resultados en la interfaz de usuario
+  mostrarResultados(resultados);
 }
 
 // ------------------------------------------------------------------------
@@ -139,8 +159,6 @@ const contacts = [
 ];
 let timerId;
 
-console.log(contacts);
-
 //--------------------------------//
 
 const newContact = () => {
@@ -160,7 +178,7 @@ function mostrarResultados(resultados) {
     resultadosContainer.textContent = "No se encontraron resultados.";
   } else {
     // Itera sobre los resultados y crea un elemento de lista para cada uno
-    resultados.forEach((contact) => {
+    resultados.forEach((contact, index) => {
       //Crear div targeta
       const tarjetaContacto = document.createElement("div");
       tarjetaContacto.classList.add("flip-card");
@@ -183,6 +201,7 @@ function mostrarResultados(resultados) {
         </div>
         <p>${contact.telefono}</p>
         <p class="email">${contact.email}</p>
+        <button class="eliminar-contacto" onclick="eliminarContacto(${index})">Eliminar contacto</button>
       </div>
     </div>
       `;
@@ -192,7 +211,10 @@ function mostrarResultados(resultados) {
   }
 }
 // ---------------------------------//
-
+function eliminarContacto(index) {
+  contacts.splice(index, 1);
+  mostrarResultados(contacts);
+}
 // Obtén el botón de búsqueda y el campo de entrada
 const btnBuscar = document.getElementById("btnBuscar");
 const inputBusqueda = document.getElementById("inputBusqueda");
@@ -265,7 +287,33 @@ function addContact(event) {
   const apellido = document.getElementById("lastName").value.toLowerCase();
   const telefono = document.getElementById("phone").value;
   const email = document.getElementById("email").value.toLowerCase();
-  const foto = document.getElementById("photo").value;
+  let foto = document.getElementById("photo").value;
+  if (!foto) {
+    foto = "https://picsum.photos/215";
+  }
+  // Comprobamos si ya existe un contacto con el mismo nombre y apellido
+  const contactoExistente = contacts.find(
+    (contacto) => contacto.nombre === nombre && contacto.apellido === apellido
+  );
+
+  if (contactoExistente) {
+    // Si el contacto ya existe, muestra un mensaje temporal y devuelve
+    const mensajeExistente = document.getElementById("mensajeExistente");
+    mensajeExistente.classList.remove("hidden");
+    console.log("ya existe");
+    // Limpia el formulario
+    formAdd.reset();
+
+    mostrarResultados(contacts);
+
+    containerForm.classList.add("hidden");
+
+    setTimeout(() => {
+      mensajeExistente.classList.add("hidden");
+    }, 3000);
+
+    return;
+  }
 
   //Creando el nuevo contacto con los valores introducidos
   const newContact = {
@@ -281,6 +329,8 @@ function addContact(event) {
 
   // Limpia el formulario
   formAdd.reset();
+
+  mostrarResultados(contacts);
 
   containerForm.classList.add("hidden");
   console.log(contacts);

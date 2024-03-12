@@ -50,7 +50,7 @@
               <input
                 type="text"
                 id="firstName"
-                placeholder="Fisrt name"
+                placeholder="Fisrt name*"
                 required
               />
               <div class="underline"></div>
@@ -59,7 +59,7 @@
               <input
                 type="text"
                 id="lastName"
-                placeholder="Last name"
+                placeholder="Last name*"
                 required
               />
               <div class="underline"></div>
@@ -70,18 +70,22 @@
               <input
                 type="text"
                 id="email"
-                placeholder="Email Adress"
+                placeholder="Email Adress*"
                 required
               />
               <div class="underline"></div>
             </div>
             <div class="input-data">
-              <input type="tel" id="phone" placeholder="Phone" required />
+              <input type="tel" id="phone" placeholder="Phone*" required />
               <div class="underline"></div>
             </div>
 
             <div class="input-data">
-              <input type="text" id="photo" placeholder="link foto" required />
+              <input
+                type="text"
+                id="photo"
+                placeholder="link foto (opcional)"
+              />
               <div class="underline"></div>
             </div>
           </div>
@@ -92,6 +96,9 @@
             </div>
           </div>
         </form>
+      </section>
+      <section class="hidden" id="mensajeExistente">
+        <p>El contacto que intenta introducir ya existe</p>
       </section>
     </main>
     <script src="./assets/js/script.js"></script>
