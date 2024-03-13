@@ -2,6 +2,7 @@ const alphabetContainer = document.getElementById("alphabet-container");
 const valorBusqueda = document
   .getElementById("inputBusqueda")
   .value.toLowerCase();
+let timerId;
 
 for (let i = 65; i <= 90; i++) {
   // Códigos ASCII de A a Z
@@ -48,8 +49,6 @@ function buscarPorLetra(letra) {
   // Muestra los resultados en la interfaz de usuario
   mostrarResultados(resultados);
 }
-
-// ------------------------------------------------------------------------
 const contacts = [
   {
     nombre: "Juan",
@@ -157,7 +156,8 @@ const contacts = [
     foto: "https://picsum.photos/201",
   },
 ];
-let timerId;
+
+// ------------------------------------------------------------------------
 
 //--------------------------------//
 

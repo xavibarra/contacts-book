@@ -71,6 +71,9 @@ h1 {
   cursor: pointer;
   display: inline-block;
 }
+.close-icon {
+  color: #9f01ea;
+}
 a {
   text-decoration: none;
   color: white;
